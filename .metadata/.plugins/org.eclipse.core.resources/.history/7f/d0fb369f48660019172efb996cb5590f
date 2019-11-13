@@ -1,0 +1,9 @@
+package Assignment;
+
+import org.testng.annotations.Test;
+
+public class TestMaster {
+  @Test
+  public void f() {
+  }
+}

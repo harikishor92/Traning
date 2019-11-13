@@ -1,0 +1,27 @@
+package Day04;
+
+import org.openqa.selenium.WebDriver;
+
+import Util.Bing_Home_POM;
+import Util.Bing_Result_POM;
+import Util.aut_util;
+
+public class Bing_PF_Example 
+{
+	public static void main(String[] args)
+	{
+		WebDriver oWD=aut_util.InvokeBrowser("FF");
+		oWD.get("https://www.bing.com/");
+		
+		Bing_Home_POM oAutHome=new Bing_Home_POM(oWD);
+		oAutHome.WebSearch("Cricket");
+		//oAutHome.oSearchTextBox.clear();
+		//oAutHome.oSearchTextBox.sendKeys("Google india");
+		//oAutHome.oSearchButton.click();
+		
+		Bing_Result_POM oAutResultPage=new Bing_Result_POM(oWD);
+		System.out.println(oAutResultPage.oMatch.getText());
+	}
+	
+	
+}

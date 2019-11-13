@@ -1,0 +1,27 @@
+package Day04;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+
+import Util.Bing_Home_POM;
+import Util.Bing_PF;
+import Util.Bing_Result_POM;
+import Util.aut_util;
+
+public class Bing_PF_Example 
+{
+	public static void main(String[] args)
+	{
+		WebDriver oWD=aut_util.InvokeBrowser("FF");
+		oWD.get("https://www.bing.com/");
+		
+		Bing_PF oAut=PageFactory.initElements(oWD,Bing_PF.class);
+		
+		oAut.oSearchTextBox.sendKeys("Fowser");
+		oAut.oSearchButton.click();
+		
+		System.out.println(oAut.oMatch.getText());
+	}
+	
+	
+}

@@ -1,0 +1,37 @@
+package Assignment;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+
+//import org.openqa.selenium.WebDriver;
+ 
+import org.openqa.selenium.WebElement;
+ 
+import org.openqa.selenium.firefox.FirefoxDriver;
+ 
+public class Links {
+	protected void setElementConverter(org.openqa.selenium.remote.internal.JsonToWebElementConverter converter)
+ public static void main(String[] args) 
+ {
+	String sBrDriverPath="./drivers/geckodriver.exe";
+		System.setProperty("webdriver.gecko.driver",sBrDriverPath);
+ FirefoxDriver driver = new FirefoxDriver();
+ 
+ driver.get("https://www.amazon.com/");
+ 
+  List<WebElement> links = driver.findElements(By.tagName("a"));
+ 
+ System.out.println(links.size());
+ 
+ for (int i = 1; i<=links.size(); i=i+1)
+ 
+ {
+ 
+ System.out.println(links.get(i).getText());
+ 
+ }
+ 
+ }
+ 
+}

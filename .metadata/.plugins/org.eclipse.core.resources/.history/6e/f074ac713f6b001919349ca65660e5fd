@@ -1,0 +1,34 @@
+package Day04;
+
+import org.openqa.selenium.Platform;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.PageFactory;
+
+import Util.Bing_Home_POM;
+import Util.Bing_PF;
+import Util.Bing_Result_POM;
+import Util.aut_util;
+
+public class Grid_Example 
+{
+	public static void main(String[] args)
+	{
+		DesiredCapabilities oCap=new DesiredCapabilities();
+		oCap.setPlatform(Platform.WINDOWS);
+		oCap.setBrowserName(DesiredCapabilities.firefox().getBrowserName());
+		
+		String sHubUrl="http://localhost:4444/wd/hub";
+		WebDriver oWD=aut_util.InvokeBrowser("FF");
+		oWD.get("https://www.bing.com/");
+		
+		Bing_PF oAut=PageFactory.initElements(oWD,Bing_PF.class);
+		
+		oAut.oSearchTextBox.sendKeys("Flowers");
+		oAut.oSearchButton.click();
+		
+		System.out.println(oAut.oMatch.getText());
+	}
+	
+	
+}

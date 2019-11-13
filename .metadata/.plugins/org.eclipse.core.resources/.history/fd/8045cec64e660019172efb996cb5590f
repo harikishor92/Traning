@@ -1,0 +1,68 @@
+package Assignment;
+
+import org.testng.annotations.Test;
+
+import Util.aut_util;
+import org.openqa.selenium.remote.internal.JsonToWebElementConverter;
+import org.testng.annotations.BeforeClass;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+
+public class TestMaster 
+{
+	static WebDriver oWD;
+	static String sBr="FF";
+	static String sAutUrl="https://www.amazon.in/";
+	
+	
+  @Test
+  public void WebSearch() 
+  {
+	  if(oWD.getCurrentUrl().contains(sAutUrl))
+	  {
+		  System.out.println("Ready for validation....");
+	  }
+	  else
+		  System.err.println("Navigated to diff URL");
+  }
+  
+  @Test
+  public void FindAllLinks() 
+  {
+	  List<WebElement> links = oWD.findElements(By.tagName("a"));
+	  
+	  System.out.println(links.size());
+	  
+	  for (int i = 1; i<=links.size(); i=i+1)
+	  
+	  {
+	  
+	  System.out.println(links.get(i).getText());
+	  
+	  }
+  }
+  
+  
+  @BeforeClass
+  public void beforeClass() 
+  {
+	  oWD=aut_util.InvokeBrowser(sBr);
+	  Assert.assertNotNull(oWD);
+	  oWD.navigate().to(sAutUrl);
+  }
+
+  @AfterClass
+  public void afterClass() 
+  {
+	  Assert.assertNotNull(oWD);
+	  oWD.quit();
+	
+  }
+
+}

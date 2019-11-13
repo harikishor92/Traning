@@ -1,0 +1,36 @@
+package Assignment;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class Images {
+	
+	public static void main(String[] args) 
+	 {
+		String sBrDriverPath="./drivers/geckodriver.exe";
+			System.setProperty("webdriver.gecko.driver",sBrDriverPath);
+	 FirefoxDriver driver = new FirefoxDriver();
+	 driver.get("https://www.amazon.in/");
+	 
+	 try {
+			List<WebElement> images = driver.findElements(By.tagName("img"));
+			System.out.println("Total no. of images are : " + images.size());
+			
+			 
+			 for (int i = 1; i<=images.size(); i=i+1)
+			 {
+			 System.out.println("Image src:"+images.get(i).getAttribute("src"));
+			 System.out.println("Height:"+images.get(i).getAttribute("height"));
+			 System.out.println("Width:"+images.get(i).getAttribute("width"));
+			 }	
+		} 
+	 catch (Exception e) {}
+	 
+	 }
+
+}
+
+

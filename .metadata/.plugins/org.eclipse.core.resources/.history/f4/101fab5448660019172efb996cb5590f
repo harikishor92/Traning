@@ -1,0 +1,46 @@
+package Day02;
+
+import org.testng.annotations.Test;
+
+import Util.aut_util;
+
+import org.testng.annotations.BeforeClass;
+import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+
+public class TestNG_Master 
+{
+	static WebDriver oWD;
+	static String sBr="FF";
+	static String sAutUrl="https://www.bing.com";
+	
+	
+  @Test
+  public void WebSearch() 
+  {
+	  if(oWD.getCurrentUrl().contains(sAutUrl))
+	  {
+		  System.out.println("Ready for validation....");
+	  }
+	  else
+		  System.err.println("Navigated to diff URL");
+  }
+  
+  @BeforeClass
+  public void beforeClass() 
+  {
+	  oWD=aut_util.InvokeBrowser(sBr);
+	  Assert.assertNotNull(oWD);
+	  oWD.navigate().to(sAutUrl);
+  }
+
+  @AfterClass
+  public void afterClass() 
+  {
+	  Assert.assertNotNull(oWD);
+	  oWD.quit();
+	
+  }
+
+}
